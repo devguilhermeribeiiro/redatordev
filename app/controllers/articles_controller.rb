@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
-  before_action :is_admin!
+  before_action :check_admin
 
   # GET /articles or /articles.json
   def index
@@ -60,17 +60,22 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title, :content)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
-    def is_admin
-      redirect_to root_path, alert: 'Access Denied' unless current_user.admin?
+  # Only allow a list of trusted parameters through.
+  def article_params
+    params.require(:article).permit(:title, :content)
+  end
+
+  def check_admin
+    if current_user.admin?
+      redirect_to root_path, alert: 'Access Denied' unless request.path == articles_path
+    else
+      redirect_to root_path, alert: 'Access Denied'
     end
+  end
 end
