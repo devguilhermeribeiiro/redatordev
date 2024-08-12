@@ -75,7 +75,7 @@ class ArticlesController < ApplicationController
     if current_user.admin?
       redirect_to root_path, alert: 'Access Denied' unless request.path == articles_path
     else
-      redirect_to root_path, alert: 'Access Denied'
+      redirect_to cancel_user_registration_path, alert: 'Access Denied'
     end
   end
 end
