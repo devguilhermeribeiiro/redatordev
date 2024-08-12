@@ -12,3 +12,6 @@
 </div>
 
 <%= link_to "New article", new_article_path %>
+<br>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
