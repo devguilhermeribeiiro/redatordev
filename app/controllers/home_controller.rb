@@ -11,6 +11,6 @@ class HomeController < ApplicationController
   private
 
   def set_article
-    @articles = Article.find(params[:id])
+    @article = Article.find(params[:id])
   end
 end
