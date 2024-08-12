@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :home
 
   root "home#index"
+  get 'home/show/:id', to: 'home#show', as: 'home_article'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
