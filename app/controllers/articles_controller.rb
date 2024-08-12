@@ -1,6 +1,8 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
+  before_action :is_admin!
+
   # GET /articles or /articles.json
   def index
     @articles = Article.all
@@ -66,5 +68,9 @@ class ArticlesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def article_params
       params.require(:article).permit(:title, :content)
+    end
+
+    def is_admin
+      redirect_to root_path, alert: 'Access Denied' unless current_user.admin?
     end
 end
