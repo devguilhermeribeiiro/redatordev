@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="88.576881"
+   height="76.210205"
+   viewBox="0 0 88.576881 76.210205"
+   sodipodi:docname="Captura de tela de 2024-08-13 17-48-49.png"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1"
+     transform="translate(117.61262,166.20125)">
+    <rect
+       style="fill:#ffffff;fill-rule:evenodd;stroke:#ffffff;stroke-width:0.454468"
+       id="rect14"
+       width="88.122414"
+       height="75.755737"
+       x="-117.38538"
+       y="-165.97401" />
+    <path
+       id="path2"
+       style="fill:#000000;fill-opacity:1;stroke:#000000"
+       d="m -102.41588,-150.54763 -2.03516,1.83203 21.378914,19.77149 -21.986334,21.10547 2.15039,2.16601 23.937504,-23.33008 z m 13.974614,41.20508 v 3.14453 h 47.06445 v -3.14453 z" />
+  </g>
+</svg>
