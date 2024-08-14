@@ -68,12 +68,14 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :content)
+    params.require(:article).permit(:title, :tag, :content)
   end
 
   def check_admin
     if current_user.admin?
-      redirect_to root_path, alert: 'Access Denied' unless request.path == articles_path
+      return if request.path.start_with?(articles_path)
+      
+      redirect_to root_path, alert: 'Access Denied'
     else
       redirect_to cancel_user_registration_path, alert: 'Access Denied'
     end
