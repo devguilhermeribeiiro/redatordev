@@ -1,13 +1,13 @@
 <div class="flex flex-col items-center justify-center min-h-screen py-8">
-  <nav class="w-full bg-indigo-600 fixed top-0 left-0 z-70" data-controller="dropdown">
+  <nav class="w-full bg-indigo-600 fixed top-0 left-0 z-70" >
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-24">
       <!-- Nome da Aplicação -->
       <div class="flex-shrink-0">
         <%= link_to 'Redator Dev', home_index_path, class: "text-white text-2xl font-bold" %>
       </div>
       <!-- Menu de Pesquisa por Tags -->
-      <div class="relative" data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
-        <button class="text-white focus:outline-none" >
+      <div class="relative" data-controller="dropdown">
+        <button class="text-white focus:outline-none"  data-action="mouseover->dropdown#show mouseleave->dropdown#hide" >
           Search by Tags
         </button>
         <div data-dropdown-target="menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
@@ -25,18 +25,19 @@
     <div id="articles" class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-1  w-11/12 place-items-center mx-auto">
       <% @articles.each do |article| %>
         <div class="bg-white overflow-hidden shadow rounded-lg p-6 w-full mx-auto">
-          <div id="<%= dom_id article %>" class="text-center">
-            <h2 class="text-xl font-semibold text-gray-800">
-              <%= article.title %>
-            </h2>
+          <%= link_to home_article_path(article) do %>
+            <div id="<%= dom_id article %>" class="text-center">
+              <div class="flex items-center justify-center">
+                <h2 class="text-xl font-semibold text-gray-800">
+                  <%= article.title %>
+                </h2>
+              </div>
 
-            <p class="text-gray-500 mt-2">
-              <%= article.created_at.strftime("%B %d, %Y") %>
-            </p>
-          </div> 
-          <p class="mt-4">
-            <%= link_to "Show this article", home_article_path(article), class: "text-indigo-600 hover:text-indigo-900 font-semibold" %>
-          </p>
+              <p class="text-gray-500 mt-2">
+                <%= article.created_at.strftime("%B %d, %Y") %> | <%= article.tag %>
+              </p>
+            </div> 
+          <% end %>
         </div>
       <% end %>
     </div>
