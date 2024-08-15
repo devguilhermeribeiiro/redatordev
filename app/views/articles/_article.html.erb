@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <strong>Tag:</strong>
+    <%= @article.tag&.name || "No tag assigned" %>
+  </p>
+
+  <p>
     <strong>Content:</strong>
     <%= article.content %>
   </p>
