@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+  resources :articles
+  resources :home
   devise_for :users
+  root "home#index"
+
+  get 'tag/index'
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
-  resources :articles
-  resources :home
+  get 'home/tag/:tag_name', to: 'home#index_by_tag', as: 'articles_by_tag'
 
-  root "home#index"
   get 'home/show/:id', to: 'home#show', as: 'home_article'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
