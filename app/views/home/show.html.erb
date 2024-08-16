@@ -6,15 +6,15 @@
         <%= link_to 'Redator Dev', home_index_path, class: "text-white text-2xl font-bold" %>
       </div>
       <!-- Menu de Pesquisa por Tags -->
-      <div class="relative" data-action="mouseover->dropdown#show mouseleave->dropdown#hide">
+      <div class="relative" data-controller="dropdown">
         <button class="text-white focus:outline-none">
           Search by Tags
         </button>
         <div data-dropdown-target="menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20">
           <!-- Lista de tags -->
-          <%= link_to "Tag 1", "#", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-          <%= link_to "Tag 2", "#", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
-          <%= link_to "Tag 3", "#", class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+          <% @tags&.each do |tag| %>
+            <%= link_to tag.name, articles_by_tag_path(tag.name), class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" %>
+          <% end %>
         </div>
       </div>
     </div>
