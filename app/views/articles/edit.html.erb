@@ -1,10 +1,60 @@
-<h1>Editing article</h1>
+<!-- Navbar -->
+<nav class="w-full bg-indigo-600 fixed top-0 left-0 z-70">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-24">
+    <div class="flex-shrink-0">
+      <%= link_to 'Redator Dev', home_index_path, class: "text-white text-2xl font-bold" %>
+    </div>
+    <div class="flex items-center">
+      <%= link_to 'New Article', new_article_path, class: "text-white text-sm font-medium hover:text-gray-300 mr-4" %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' }, class: "text-white text-sm font-medium hover:text-gray-300" %>
+    </div>
+  </div>
+</nav>
 
-<%= render "form", article: @article %>
+<!-- Content -->
+<div class="flex flex-col items-center min-h-screen py-24 px-4 bg-gray-100 mt-16">
+  <!-- Notification Message -->
+  <% if notice %>
+    <p class="text-green-600 bg-green-100 border border-green-200 rounded-lg p-4 mb-4">
+      <%= notice %>
+    </p>
+  <% end %>
 
-<br>
+  <div class="w-full max-w-4xl text-center">
+    <h1 class="text-2xl font-bold mb-6">Editing Article</h1>
 
-<div>
-  <%= link_to "Show this article", @article %> |
-  <%= link_to "Back to articles", articles_path %>
+    <%= form_with(model: @article, local: true) do |form| %>
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="mb-4">
+          <%= form.label :title, class: "block text-left mb-2 text-gray-700" %>
+          <%= form.text_field :title, class: "w-full px-4 py-2 border rounded-lg bg-gray-200", placeholder: "Enter article title" %>
+        </div>
+
+        <div class="mb-4">
+          
+          <div id="tag-creation" class="mt-2">
+            <%= form.label :tag, class: "block text-left mb-2 text-gray-700" %>
+            <%= form.text_field :tag_name, class: "w-full px-4 py-2 border rounded-lg bg-gray-200" %>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <%= form.label :content, class: "block text-left mb-2 text-gray-700" %>
+          <%= form.text_area :content, class: "w-full px-4 py-2 border rounded-lg bg-gray-200", rows: 10, placeholder: "Enter article content" %>
+        </div>
+
+        <div class="mb-4">
+          <%= form.submit "Update Article", class: "px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700" %>
+        </div>
+      </div>
+    <% end %>
+
+    <br>
+
+    <div>
+      <%= link_to "Show this article", @article, class: "text-indigo-600 hover:underline" %> |
+      <%= link_to "Back to articles", articles_path, class: "text-indigo-600 hover:underline" %>
+    </div>
+  </div>
 </div>
+

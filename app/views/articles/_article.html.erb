@@ -1,17 +1,7 @@
-<div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Tag:</strong>
-    <%= @article.tag&.name || "No tag assigned" %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
+<div id="<%= dom_id @article %>" >
+  <div class="text-center">
+    <h2 class="text-2xl font-bold text-gray-800"><%= @article.title %></h2>
+    <p class="text-gray-500 mt-2 pb-10"><%= @article.created_at.strftime("%B %d, %Y") %> | <%= article.tag.name %></p>
+  </div>
+  <p class="mt-4 text-gray-700 whitespace-pre-wrap"><%= @article.content %></p>
 </div>
