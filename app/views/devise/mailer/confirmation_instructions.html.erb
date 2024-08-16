@@ -1,5 +1,11 @@
-<p>Welcome <%= @email %>!</p>
+<div class="flex items-center justify-center min-h-screen bg-gray-100">
+  <div class="max-w-md w-full bg-white p-8 rounded-lg shadow-lg text-center">
+    <p class="text-lg font-medium text-gray-800 mb-4">Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+    <p class="text-gray-600 mb-6">You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+    <p>
+      <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class: "text-indigo-600 hover:text-indigo-800 font-semibold" %>
+    </p>
+  </div>
+</div>
