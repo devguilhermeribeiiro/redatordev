@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   devise_for :users
   root "home#index"
 
-  get 'tag/index'
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
