@@ -27,6 +27,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        update_tag
         format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
         format.json { render :show, status: :created, location: @article }
       else
@@ -40,6 +41,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
+        update_tag
         format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
       else
@@ -68,13 +70,22 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :tag, :content)
+    params.require(:article).permit(:title, :content, :tag_name)
   end
+
+  def update_tag
+    tag_name = params[:article][:tag_name]
+    return if tag_name.blank?
+
+    tag = Tag.find_or_create_by(name: tag_name.strip)
+    @article.update(tag: tag)
+  end
+
 
   def check_admin
     if current_user.admin?
       return if request.path.start_with?(articles_path)
-      
+
       redirect_to root_path, alert: 'Access Denied'
     else
       redirect_to cancel_user_registration_path, alert: 'Access Denied'
