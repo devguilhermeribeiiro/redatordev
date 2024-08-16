@@ -25,19 +25,19 @@
     <div id="articles" class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-1  w-11/12 place-items-center mx-auto">
       <% @articles.each do |article| %>
         <div class="bg-white overflow-hidden shadow rounded-lg p-6 w-full mx-auto">
-          <%= link_to home_article_path(article) do %>
-            <div id="<%= dom_id article %>" class="text-center">
-              <div class="flex items-center justify-center">
-                <h2 class="text-xl font-semibold text-gray-800">
-                  <%= article.title %>
-                </h2>
-              </div>
+          <div id="<%= dom_id article %>" class="text-center">
+            <%= link_to home_article_path(article) do %>
+                <div class="flex items-center justify-center">
+                  <h2 class="text-xl font-semibold text-gray-800">
+                    <%= article.title %>
+                  </h2>
+                </div>
+            <% end %>
 
-              <p class="text-gray-500 mt-2">
-                <%= article.created_at.strftime("%B %d, %Y") %> | <%= article.tag&.name %>
-              </p>
-            </div> 
-          <% end %>
+            <p class="text-gray-500 mt-2">
+              <%= article.created_at.strftime("%B %d, %Y") %> | <%= link_to article.tag&.name, articles_by_tag_path(article.tag&.name), class: "text-indigo-600"%>
+            </p>
+          </div> 
         </div>
       <% end %>
     </div>
