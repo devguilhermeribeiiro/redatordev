@@ -55,7 +55,7 @@ Devise.setup do |config|
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
 
-  #Timeout
+  # Timeout
   config.timeout_in = 30.minutes
 
   # Configure which authentication keys should be case-insensitive.
