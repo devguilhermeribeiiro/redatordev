@@ -33,9 +33,9 @@
                 </h2>
               </div>
 
-              <p class="mt-2 flex">
-                <%= article.created_at.strftime("%B %d, %Y"), class: "text-gray-500" %> | 
-                <%= article.tag&.name, class: "text-indigo-600" %>
+              <p class="mt-2">
+                <span class="text-gray-500"><%= article.created_at.strftime("%B %d, %Y") %></span> | 
+               <span class="text-indigo-600"><%= article.tag&.name %></span>
               </p>
             </div> 
           <% end %>
